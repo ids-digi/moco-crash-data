@@ -1,0 +1,37 @@
+RAW_CRASH_FILES = [
+   'moco-crash-2022.csv',
+   'moco-crash-2021.csv',
+   'moco-crash-2020.csv',
+   'moco-crash-2019.csv',
+   ]
+
+# rule clean_times:
+#   input: 
+#     "../source-data/" + RAW_CRASH_FILES[0]   
+#   output: 
+#     "../data-output/date-clean-" + RAW_CRASH_FILES[0]   
+#   shell: 
+#     "python cleaning-scripts/clean_datetime.py {input} {output}"
+
+# rule clean_times1:
+#     input: 
+#         "../source-data/" + RAW_CRASH_FILES[1]   
+#     output: 
+#         "../data-output/date-clean-" + RAW_CRASH_FILES[1]   
+#     shell: "python cleaning-scripts/clean_datetime.py {input} {output}"
+
+rule clean_times2:
+    input: 
+        "../source-data/" + RAW_CRASH_FILES[2]   
+    output: 
+        "../data-output/date-clean-" + RAW_CRASH_FILES[2]   
+    shell: 
+        "python cleaning-scripts/clean_datetime.py {input} {output}"
+
+rule clean_times3:
+    input: 
+        "../source-data/" + RAW_CRASH_FILES[3]   
+    output: 
+        "../data-output/date-clean-" + RAW_CRASH_FILES[3]   
+    shell: 
+        "python cleaning-scripts/clean_datetime.py {input} {output}"
