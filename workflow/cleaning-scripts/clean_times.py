@@ -7,8 +7,7 @@ columns for the `clean_datetime.py` script
 import sys 
 
 import pandas as pd
-import numpy as np
-from datetime import date, time
+from datetime import time
 import re
 
 def load_data(in_file):
