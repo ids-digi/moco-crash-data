@@ -56,10 +56,10 @@ if __name__ == "__main__":
     """
     run this command in the terminal: 
 
-    python clean_datetime.py "../../source-data/moco-crash-2022.csv" "../../data-output/clean_date_times/moco-crash-2022.csv" /
-    python clean_datetime.py "../../source-data/moco-crash-2021.csv" "../../data-output/clean_date_times/moco-crash-2021.csv" /
-    python clean_datetime.py "../../source-data/moco-crash-2020.csv" "../../data-output/clean_date_times/moco-crash-2020.csv" /
-    python clean_datetime.py "../../source-data/moco-crash-2019.csv" "../../data-output/clean_date_times/moco-crash-2019.csv" / 
-    python clean_datetime.py "../../data-output/temp/moco-crash-2013-2018.csv" "../../data-output/clean_date_times/moco-crash-2013-2018.csv" / 
-    python clean_datetime.py "../../data-output/temp/moco-crash-2003-2015.csv" "../../data-output/clean_date_times/moco-crash-2003-2015.csv"
+    python clean_datetime.py "../../source-data/moco-crash-2022.csv" "../../data-output/temp/moco-crash-2022.csv" /
+    python clean_datetime.py "../../source-data/moco-crash-2021.csv" "../../data-output/temp/moco-crash-2021.csv" /
+    python clean_datetime.py "../../source-data/moco-crash-2020.csv" "../../data-output/temp/moco-crash-2020.csv" /
+    python clean_datetime.py "../../source-data/moco-crash-2019.csv" "../../data-output/temp/moco-crash-2019.csv" / 
+    python clean_datetime.py "../../data-output/temp/moco-crash-2013-2018.csv" "../../data-output/temp/moco-crash-2013-2018.csv" / 
+    python clean_datetime.py "../../data-output/temp/moco-crash-2003-2015.csv" "../../data-output/temp/moco-crash-2003-2015.csv"
     """
