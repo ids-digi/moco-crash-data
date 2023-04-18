@@ -37,7 +37,7 @@ python clean_addresses.py "../../data-output/temp/moco-crash-2003-2015.csv" "../
 python make_master_file.py "../../data-output/temp/moco-crash-2022.csv" "../../data-output/temp/moco-crash-2021.csv" "../../data-output/temp/moco-crash-2020.csv" "../../data-output/temp/moco-crash-2019.csv" "../../data-output/temp/moco-crash-2013-2018.csv" "../../data-output/temp/moco-crash-2003-2015.csv" "../../data-output/master-crashes.csv"
 ```
 
-## Option 1: run them all at once
+## Option 2: run them all at once
 Just copy the below code and paste it into terminal
 ```curl
 python main_data_cleaning.py "../../source-data/moco-crash-2013-2018.csv" "../../source-data/moco-crash-2003-2015.csv" "../../data-output/temp/moco-crash-2013-2018.csv" "../../data-output/temp/moco-crash-2003-2015.csv" /
