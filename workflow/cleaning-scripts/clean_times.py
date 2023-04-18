@@ -58,7 +58,7 @@ def clean_time_0315(hour_string):
         return str(time(int(hour_string / 100)))
 
 def clean_0315(df):
-    df['Colission Date'] = pd.to_datetime(df[['Year', 'Month', 'Day']])
+    df['Collision Date'] = pd.to_datetime(df[['Year', 'Month', 'Day']])
     df['Collision Time'] = df['Hour'].apply(clean_time_0315)
     return df.drop(columns=['Year','Month','Day','Hour','Weekend?'])
 

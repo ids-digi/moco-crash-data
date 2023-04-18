@@ -50,7 +50,7 @@ if __name__ == "__main__":
 
     # print('running datetime script with ' + sys.argv[1] + ' and ' + sys.argv[2])
 
-    CLEAN_DF = clean_date_time(DF, 'Colission Date', 'Collision Time')
+    CLEAN_DF = clean_date_time(DF, 'Collision Date', 'Collision Time')
     save_clean_df(CLEAN_DF,OUTFILE)
 
     """

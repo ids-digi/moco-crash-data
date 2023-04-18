@@ -2,3 +2,14 @@ env
 .snakemake
 .ipynb_checkpoints
 .DS_Store
+
+# ignore files in folder
+data-output/clean_date_times/*
+data-output/clean_addresses/*
+data-output/temp/*
+
+# ...but keep the folder
+!data-output/.gitkeep
+!data-output/clean_date_times/.gitkeep
+!data-output/clean_addresses/.gitkeep
+!data-output/temp/.gitkeep
