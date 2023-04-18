@@ -1,4 +1,4 @@
-'''
+"""
 this script produces a master file, useful for mapping or comparing
 general crash statistics across all years. 
 
@@ -22,104 +22,117 @@ more comparable and easier to map.
 analysis of 2003-2012 should NOT rely on the death/injury numbers from this
 master dataset as exact numbers. instead, more specific analysis should
 be based on the specific 2003-2015 file, not the master file.
-'''
+"""
 
-import sys 
+import sys
 
 import pandas as pd
+
 
 def load_data(in_file):
     """ returns a pandas dataframe of the raw dataset """
     return pd.read_csv(in_file)
 
+
 def drop_cols(df):
     """ drops uncomparable or unuseful columns. keeps cols useful for mapping """
     cols_to_drop = [
-        'Collision Date',
-        'Collision Time',
-        'House Number',
-        'Roadway Interchange',
-        'Roadway Ramp',
-        'Interchange',
-        'Feet From',
-        'Direction',
-        'Construction Type',
-        'Type of Median',
-        '_id',
-        'Traffic Control',
-        '_id',
-        'Agency',
-        'City',
-        'Trailers Involved',
-        'Number Deer',
-        'Roadway Class',
-        'Hit and Run?',
-        'Locality',
-        'School Zone?',
-        'Rumble Strips?',
-        'Construction?',
-        'Roadway Junction Type',
-        'Road Character',
-        'Roadway Surface',
-        'Ramp',
-        'Property Type',
-        'Dir',
-        'Road Class',
-        'H&R',
-        'School ',
-        'Light',
-        'Median',
-        'Rumble Strips',
-        'Master Record Number',
-        'CN Type',
-        'Unique Location Id'
-        'Light Condition',
-        'Weather Conditions',
-        'Surface Condition',
+        "Collision Date",
+        "Collision Time",
+        "House Number",
+        "Roadway Interchange",
+        "Roadway Ramp",
+        "Interchange",
+        "Feet From",
+        "Direction",
+        "Construction Type",
+        "Type of Median",
+        "_id",
+        "Traffic Control",
+        "_id",
+        "Agency",
+        "City",
+        "Trailers Involved",
+        "Number Deer",
+        "Roadway Class",
+        "Hit and Run?",
+        "Locality",
+        "School Zone?",
+        "Rumble Strips?",
+        "Construction?",
+        "Roadway Junction Type",
+        "Road Character",
+        "Roadway Surface",
+        "Ramp",
+        "Property Type",
+        "Dir",
+        "Road Class",
+        "H&R",
+        "School ",
+        "Light",
+        "Median",
+        "Rumble Strips",
+        "Master Record Number",
+        "CN Type",
+        "Unique Location Id",
+        "Light Condition",
+        "Weather Conditions",
+        "Surface Condition",
     ]
-    return df.drop(cols_to_drop, axis=1, errors='ignore')
+    return df.drop(cols_to_drop, axis=1, errors="ignore")
+
 
 def get_year(date):
     return pd.to_datetime(date).year
 
+
 def drop_duplicate_years(df):
-    df['Year'] = df['DateTime'].apply(get_year)
-    return df[df['Year'] < 2013].drop(columns=['Year'])
+    df["Year"] = df["DateTime"].apply(get_year)
+    return df[df["Year"] < 2013].drop(columns=["Year"])
+
 
 def injury_estimate(string):
-    if string == 'Non-incapacitating':
+    if string == "Non-incapacitating":
         return 1
-    elif string == 'Incapacitating':
+    elif string == "Incapacitating":
         return 1
     else:
         return 0
+
+
 def fatality_estimate(string):
-    if string == 'Fatal':
+    if string == "Fatal":
         return 1
     else:
         return 0
+
+
 def num_vehicle_estimate(string):
-    if string == '1-Car':
+    if string == "1-Car":
         return 1
-    elif string == '2-Car':
+    elif string == "2-Car":
         return 2
-    elif string == '3+ Cars':
+    elif string == "3+ Cars":
         return 3
     else:
         return 0
-    
+
+
 def estimate_fields(df):
-    df['Number Dead'] = df['Injury Type'].apply(fatality_estimate)
-    df['Number Injured'] = df['Injury Type'].apply(injury_estimate)
-    df['Vehicles Involved'] = df['Vehicles Involved'].apply(num_vehicle_estimate)
-    return df.drop(columns=['Injury Type','Vehicles Involved'])
+    df["Number Dead"] = df["Injury Type"].apply(fatality_estimate)
+    df["Number Injured"] = df["Injury Type"].apply(injury_estimate)
+    df["Vehicles Involved"] = df["Vehicles Involved"].apply(num_vehicle_estimate)
+    return df.drop(columns=["Injury Type", "Vehicles Involved"])
+
 
 def combine_dfs(df_list):
     return pd.concat(df_list)
 
+
 def save_clean_df(cleaned_df, out_file):
-    ''' save the master df '''
+    """ save the master df """
     cleaned_df.to_csv(out_file, index=False)
+
 
 if __name__ == "__main__":
     DFS = sys.argv[1:-1]
@@ -129,7 +142,7 @@ if __name__ == "__main__":
 
     for i, df in enumerate(CLEAN_DFS):
         """if it's the 2003-2015 data, drop duplicate years and add death/injury estimates"""
-        if '2011-03-06 18:00:00' in set(df['DateTime']):
+        if "2011-03-06 18:00:00" in set(df["DateTime"]):
             CLEAN_DFS[i] = estimate_fields(drop_duplicate_years(df))
 
     CLEAN_DFS = list(map(drop_cols, CLEAN_DFS))
