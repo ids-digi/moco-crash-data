@@ -5,9 +5,10 @@ one column called `DateTime`
 
 """
 import sys 
+import os
+import glob
 
 import pandas as pd
-import numpy as np
 from datetime import date, time
 
 def load_data(in_file):
@@ -42,6 +43,12 @@ def save_clean_df(cleaned_df, out_file):
     ''' save the cleaned df '''
     cleaned_df.to_csv(out_file, index=False)
 
+def empty_temp_folder():
+    """clear out the temp folder since the files will be fully cleaned after this script runs"""
+    files = glob.glob('../data-output/temp/*')
+    for f in files:
+        os.remove(f)
+
 
 if __name__ == "__main__":
     # DF = load_data("./source-data/moco-crash-2022.csv")
@@ -52,6 +59,7 @@ if __name__ == "__main__":
 
     CLEAN_DF = clean_date_time(DF, 'Collision Date', 'Collision Time')
     save_clean_df(CLEAN_DF,OUTFILE)
+    empty_temp_folder()
 
     """
     run this command in the terminal: 
