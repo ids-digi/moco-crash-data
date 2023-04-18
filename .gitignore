@@ -1,0 +1,4 @@
+env
+.snakemake
+.ipynb_checkpoints
+.DS_Store
