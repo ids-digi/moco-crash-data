@@ -2,7 +2,7 @@
 
 `cd` into the `cleaning-scripts` folder in the terminal and run these scripts in order to execute all cleaning scripts.
 
-For more information about how the data was cleaned, look at the `notebook` folder, which has annotated Jupyter notebooks describing the thought process behind each cleaning step.
+For more information about how the data was cleaned, look at the [`notebook`](../notebooks) folder, which has annotated Jupyter notebooks describing the thought process behind each cleaning step.
 
 ## Option 1: run the scripts one by one
 
