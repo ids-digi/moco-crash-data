@@ -5,22 +5,28 @@ RAW_CRASH_FILES = [
    'moco-crash-2019.csv',
    ]
 
-# rule clean_times:
-#   input: 
-#     "../source-data/" + RAW_CRASH_FILES[0]   
-#   output: 
-#     "../data-output/date-clean-" + RAW_CRASH_FILES[0]   
-#   shell: 
-#     "python cleaning-scripts/clean_datetime.py {input} {output}"
+# first rule requires all final output files as inputs,
+# so it calls all the rules below to get those outputs
+rule all:
+  input:
+    expand("../data-output/date-clean-{dataset}", dataset=RAW_CRASH_FILES)
 
-# rule clean_times1:
-#     input: 
-#         "../source-data/" + RAW_CRASH_FILES[1]   
-#     output: 
-#         "../data-output/date-clean-" + RAW_CRASH_FILES[1]   
-#     shell: "python cleaning-scripts/clean_datetime.py {input} {output}"
+rule clean_times_2022:
+  input: 
+    "../source-data/" + RAW_CRASH_FILES[0]   
+  output: 
+    "../data-output/date-clean-" + RAW_CRASH_FILES[0]   
+  shell: 
+    "python cleaning-scripts/clean_datetime.py {input} {output}"
 
-rule clean_times2:
+rule clean_times_2021:
+    input: 
+        "../source-data/" + RAW_CRASH_FILES[1]   
+    output: 
+        "../data-output/date-clean-" + RAW_CRASH_FILES[1]   
+    shell: "python cleaning-scripts/clean_datetime.py {input} {output}"
+
+rule clean_times_2020:
     input: 
         "../source-data/" + RAW_CRASH_FILES[2]   
     output: 
@@ -28,10 +34,13 @@ rule clean_times2:
     shell: 
         "python cleaning-scripts/clean_datetime.py {input} {output}"
 
-rule clean_times3:
+rule clean_times_2019:
     input: 
         "../source-data/" + RAW_CRASH_FILES[3]   
     output: 
         "../data-output/date-clean-" + RAW_CRASH_FILES[3]   
     shell: 
         "python cleaning-scripts/clean_datetime.py {input} {output}"
+
+rule clean_times_13_18:
+    
