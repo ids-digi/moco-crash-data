@@ -20,9 +20,9 @@ The public datasets are compiled by the Indiana State Police based on reports fr
 
 ### Fields for source data from 2019-2022
 
-Field name | description
+Field name | Description
 ----------|------------
-`Agency` | Which agency reported the crash. Most frequently `BLOOMINGTON PD`, `MONROE SD`, `INDIANA UNIV BLOOMINGTON PD`, `ISP BLOOMINGTON 33` or `ELLETTSVILLE PD`
+Agency | Which agency reported the crash. Most frequently `BLOOMINGTON PD`, `MONROE SD`, `INDIANA UNIV BLOOMINGTON PD`, `ISP BLOOMINGTON 33` or `ELLETTSVILLE PD`
 City | In which city the crash was reported. Most often `BLOOMINGTON` or `ELLETTSVILLE`
 Collision Date | Date the collision happened (string)
 Collision Time | Time the collision happened (string)
@@ -60,7 +60,41 @@ Manner of Collision | How the crash happened, ex. `ran off road`, `left turn`.
 Unique Location Id | Automatically generated field which combines `Roadway Id` and `Intersecting Road`
 Traffic Control | Rarely filled out. If so, options are: `NONE`, `LANE CONTROL`, `TRAFFIC CONTROL SIGNAL`, `YIELD SIGN`, `STOP SIGN`, `OTHER`, `OTHER REGULATORY SIGN/MARKING`
 
+### Fields for source data from 2013-2018
+*Duplicate fields are not included*
+Field name | Description
+----------|------------
+DATE | Same as `Collision Date` above
+TIME | Same as `Collision Time` above
+VEH# | Same as `Vehicles Involved` above
+DEAD | Same as `Number Dead` above
+DEER | Same as `Number Deer` above
+House# | Same as `House Number` above
+Intersect Rd. | Same as `Intersecting Road` above
+Interchange | Rarely included. If so, indicates the mile marker or the name of the highway.
+Dir | Same as `Direction` above
+H&R | Same as `Hit and Run?` above
+School | Same as `School Zone?` above
+CN Zone | Same as `Construction?` above
+CN Type | Same as `Construction Type` above
+Light | Same as `Light Condition` above
+Weather | Same as `Weahter Conditions` above
+Surf Con | Same as `Surface Condition` above
+Road Char | Same as `Road Character` above
+Surface | Same as `Roadway Surface` above
+Collision Type | Same as `Manner of Collision` above
+Unique Id | Same as `Unique Location Id` above
 
-
-
-
+## Fields for source data from 2003-2015
+*Duplicate fields are not included*
+Field name | Description
+----------|------------
+Master Record Number | 9-digit ID number for each record
+Year | Year when the crash happened (integer)
+Month | Month when the crash happened (integer)
+Day | Day of the week when the crash happened (integer) 
+Weekend? | If the crash happened on a weekend. Possible values: `Weekday`, `Weekend`
+Hour | Hour of the day when the crash happened (float). Ex. `2300` means `11 PM`
+Collision Type | Combination of `Vehicle Number` field from above, along with information about pedestrian/cyclist/motorist involvement. Possible values: `2-Car`, `1-Car`, `3+ Cars`, `Pedestrian`, `Cyclist`, `Bus`, `Moped/Motorcycle`
+Injury Type | Combination of `Number Injured` and `Number Dead` fields from above, with different information. Possible values: `No injury/unknown`, `Non-incapacitating`, `Incapacitating`, `Fatal`
+Reported_Location | A combination of `Roadway Id` and `Intersecting Road`. If there are two roads involved, they are connected with a `&` symbol. 
