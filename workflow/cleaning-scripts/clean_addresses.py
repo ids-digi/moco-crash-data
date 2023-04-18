@@ -169,10 +169,10 @@ if __name__ == "__main__":
     save_clean_df(CLEAN_DF,OUTFILE)
 
     """
-    python clean_addresses.py "../../data-output/temp/moco-crash-2022.csv" "../../data-output/clean_addresses/moco-crash-2022.csv" /
-    python clean_addresses.py "../../data-output/temp/moco-crash-2021.csv" "../../data-output/clean_addresses/moco-crash-2021.csv" /
-    python clean_addresses.py "../../data-output/temp/moco-crash-2020.csv" "../../data-output/clean_addresses/moco-crash-2020.csv" /
-    python clean_addresses.py "../../data-output/temp/moco-crash-2019.csv" "../../data-output/clean_addresses/moco-crash-2019.csv" /
-    python clean_addresses.py "../../data-output/temp/moco-crash-2013-2018.csv" "../../data-output/clean_addresses/moco-crash-2013-2018.csv" /
-    python clean_addresses.py "../../data-output/temp/moco-crash-2003-2015.csv" "../../data-output/clean_addresses/moco-crash-2003-2015.csv" 
+    python clean_addresses.py "../../data-output/temp/moco-crash-2022.csv" "../../data-output/clean_files/moco-crash-2022.csv" /
+    python clean_addresses.py "../../data-output/temp/moco-crash-2021.csv" "../../data-output/clean_files/moco-crash-2021.csv" /
+    python clean_addresses.py "../../data-output/temp/moco-crash-2020.csv" "../../data-output/clean_files/moco-crash-2020.csv" /
+    python clean_addresses.py "../../data-output/temp/moco-crash-2019.csv" "../../data-output/clean_files/moco-crash-2019.csv" /
+    python clean_addresses.py "../../data-output/temp/moco-crash-2013-2018.csv" "../../data-output/clean_files/moco-crash-2013-2018.csv" /
+    python clean_addresses.py "../../data-output/temp/moco-crash-2003-2015.csv" "../../data-output/clean_files/moco-crash-2003-2015.csv" 
     """
