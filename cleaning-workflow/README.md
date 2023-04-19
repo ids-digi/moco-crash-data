@@ -50,11 +50,11 @@ python clean_datetime.py "../../data/source-data/moco-crash-2020.csv" "../../dat
 python clean_datetime.py "../../data/source-data/moco-crash-2019.csv" "../../data/cleaning-process/moco-crash-2019.csv" / 
 python clean_datetime.py "../../data/cleaning-process/moco-crash-2013-2018.csv" "../../data/cleaning-process/moco-crash-2013-2018.csv" / 
 python clean_datetime.py "../../data/cleaning-process/moco-crash-2003-2015.csv" "../../data/cleaning-process/moco-crash-2003-2015.csv" /
-python clean_addresses.py "../../data/cleaning-process/moco-crash-2022.csv" "../../data/clean-data/moco-crash-2022.csv" /
-python clean_addresses.py "../../data/cleaning-process/moco-crash-2021.csv" "../../data/clean-data/moco-crash-2021.csv" /
-python clean_addresses.py "../../data/cleaning-process/moco-crash-2020.csv" "../../data/clean-data/moco-crash-2020.csv" /
-python clean_addresses.py "../../data/cleaning-process/moco-crash-2019.csv" "../../data/clean-data/moco-crash-2019.csv" /
-python clean_addresses.py "../../data/cleaning-process/moco-crash-2013-2018.csv" "../../data/clean-data/moco-crash-2013-2018.csv" /
-python clean_addresses.py "../../data/cleaning-process/moco-crash-2003-2015.csv" "../../data/clean-data/moco-crash-2003-2015.csv" /
-python make_master_file.py "../../data/clean-data/moco-crash-2022.csv" "../../data/clean-data/moco-crash-2021.csv" "../../data/clean-data/moco-crash-2020.csv" "../../data/clean-data/moco-crash-2019.csv" "../../data/clean-data/moco-crash-2013-2018.csv" "../../data/clean-data/moco-crash-2003-2015.csv" "../../data/clean-data/master-crashes.csv" 
+python clean_addresses.py "../../data/cleaning-process/moco-crash-2022.csv" "../../data/clean-data/moco-crash-2022-clean.csv" /
+python clean_addresses.py "../../data/cleaning-process/moco-crash-2021.csv" "../../data/clean-data/moco-crash-2021-clean.csv" /
+python clean_addresses.py "../../data/cleaning-process/moco-crash-2020.csv" "../../data/clean-data/moco-crash-2020-clean.csv" /
+python clean_addresses.py "../../data/cleaning-process/moco-crash-2019.csv" "../../data/clean-data/moco-crash-2019-clean.csv" /
+python clean_addresses.py "../../data/cleaning-process/moco-crash-2013-2018.csv" "../../data/clean-data/moco-crash-2013-2018-clean.csv" /
+python clean_addresses.py "../../data/cleaning-process/moco-crash-2003-2015.csv" "../../data/clean-data/moco-crash-2003-2015-clean.csv" /
+python make_master_file.py "../../data/clean-data/moco-crash-2022-clean.csv" "../../data/clean-data/moco-crash-2021-clean.csv" "../../data/clean-data/moco-crash-2020-clean.csv" "../../data/clean-data/moco-crash-2019-clean.csv" "../../data/clean-data/moco-crash-2013-2018-clean.csv" "../../data/clean-data/moco-crash-2003-2015-clean.csv" "../../data/clean-data/master-crashes.csv" 
 ```
