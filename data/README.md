@@ -2,7 +2,9 @@
 
 This folder includes all the source data and clean data output from the [cleaning-scripts](../cleaning-workflow/cleaning-scripts/). 
 
-## Benefits/drawbacks of the data sets
+The source data is from [Bloomington Open Data](https://data.bloomington.in.gov/dataset/traffic-data).
+
+## Benefits/drawbacks of the datasets
 1. [`master-crashes.csv`](clean-data/master-crashes.csv)
 
 This data file is useful in that it combines all the data from 2003 to 2022 and allows you to map or visualize trends from all these years at once. **But**, combining data from years when it was collected differently presents issues and caveats. The main issue is that the `Number Dead` and `Number Injured` columns for the years 2003-2012 are low estimates. If a row in one of these years has `Number Injured` listed as `1`, this means there was `at least 1` injury, and might have been more. While useful to distinguish between crash severity in a mapping or trend-visualizing context, this means that the total number of injuries or deaths from the years 2003-2012 is definitely inaccurate. 
