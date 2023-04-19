@@ -7,11 +7,8 @@ This folder contains Python notebooks which explain the caveats of the data, exp
 ## [cleaning-workflow](cleaning-workflow)
 This folder contains the cleaning scripts which produce the clean data from the [source data](source-data). There are instructions within the `readme` in this folder which explain how to run the cleaning scripts on your own computer. The logic that went into the cleaning scripts is explained in the [notebooks](notebooks) folder.
 
-## [source-data](source-data)
-This folder contains the source data from [Bloomington Open Data](https://data.bloomington.in.gov/dataset/traffic-data).
-
-## [data-output](data-output)
-This folder contains the cleaned data output from the cleaning scripts. 
+## [data](data)
+This folder contains the source data from [Bloomington Open Data](https://data.bloomington.in.gov/dataset/traffic-data). It also includes the [clean-data](data/clean-data/) which has already been standardized and cleaned with the [cleaning-workflow](cleaning-workflow). Finally, the [cleaning-process](data/cleaning-process/) folder stores partially cleaned data during the data process.
 
 ## Data dictionary
 This is a data dictionary which provides more information on what each field of the public data means. The dictionary is based on interviews with Bloomington city employees. 
