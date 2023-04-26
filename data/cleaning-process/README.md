@@ -1,0 +1,1 @@
+This is an empty folder that is used as temporary storage for files being processed by the cleaning scripts.
