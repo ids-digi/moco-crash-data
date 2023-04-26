@@ -1,7 +1,7 @@
 # Monroe County crash data 
+
 *Repository to show the source data, data cleaning and data exploration that went into the IDS Monroe County Crash Dashboard published in May 2023.*
-----
-Special thanks to YY Ahn, Mike Stewart, Ryan Clemens & Mark Stosberg for help on this project
+*Special thanks to YY Ahn, Mike Stewart, Ryan Clemens & Mark Stosberg for help on this project*
 
 ## [notebooks](notebooks)
 This folder contains Python notebooks which explain the caveats of the data, explore basic trends and show the process that went into cleaning the data to prepare it for mapping. We hope these notebooks will help people who are trying to explore this data themselves understand it better and have a starting point to learn more.
