@@ -31,7 +31,7 @@ import pandas as pd
 
 def load_data(in_file):
     """ returns a pandas dataframe of the raw dataset """
-    return pd.read_csv(in_file)
+    return pd.read_csv(in_file, low_memory=False)
 
 
 def drop_cols(df):
@@ -152,6 +152,8 @@ if __name__ == "__main__":
     master = combine_dfs(CLEAN_DFS)
 
     save_clean_df(master, OUTFILE)
+
+    print("master file saved successfully")
 
     """
     run this command in the terminal: 
