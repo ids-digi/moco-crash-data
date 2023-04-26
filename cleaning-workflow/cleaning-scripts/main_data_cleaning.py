@@ -7,55 +7,85 @@ output:
     - data-output/temp/moco-crash-2013-2018.csv
     - data-output/temp/moco-crash-2003-2015.csv
 """
-import sys 
+import sys
 
 import pandas as pd
+import numpy as np
 import re
+
 
 def load_data(crash_file):
     """ returns a pandas dataframe of the raw dataset. """
-    return pd.read_csv(crash_file,encoding='unicode_escape')
+    return pd.read_csv(crash_file, encoding="unicode_escape")
+
 
 def rename_df(crash_df, rename_dict):
     """ renaming columns to match with 2019-2022 field names """
     return crash_df.rename(index=str, columns=rename_dict, inplace=False)
 
+
 def get_road1(row):
     if isinstance(row, str):
         return row.split("&")[0].strip()
     else:
-        return ''
+        return ""
+
+
 def get_road2(row):
-    if isinstance(row,str):
-        return row.split("&")[1] if len(row.split("&")) > 1 else ''
-        
+    if isinstance(row, str):
+        return row.split("&")[1] if len(row.split("&")) > 1 else ""
+
     else:
-        return ''
+        return ""
+
+
 # remove all info in parentheses in street names
 def remove_parens(row):
-    return " ".join(re.sub('\(.*\)', '', row).split())
+    return " ".join(re.sub("\(.*\)", "", row).split())
+
 
 def organize_location_cols(df):
-    df['Roadway Id'] = df['Reported_Location'].apply(get_road1)
-    df['Intersecting Road'] = df['Reported_Location'].apply(get_road2)
+    df["Roadway Id"] = df["Reported_Location"].apply(get_road1)
+    df["Intersecting Road"] = df["Reported_Location"].apply(get_road2)
 
-    df['Roadway Id'] = df['Roadway Id'].fillna('')
-    df['Intersecting Road'] = df['Intersecting Road'].fillna('')
+    df["Roadway Id"] = df["Roadway Id"].fillna("")
+    df["Intersecting Road"] = df["Intersecting Road"].fillna("")
 
-    df['Roadway Id'] = df['Roadway Id'].apply(remove_parens)
-    df['Intersecting Road'] = df['Intersecting Road'].apply(remove_parens)
+    df["Roadway Id"] = df["Roadway Id"].apply(remove_parens)
+    df["Intersecting Road"] = df["Intersecting Road"].apply(remove_parens)
     return df.drop(columns=["Reported_Location"])
 
+
+def ped_involved(String):
+    if String == "Pedestrian":
+        return True
+    else:
+        return np.nan
+
+
+def cyclist_involved(String):
+    if String == "Cyclist":
+        return True
+    else:
+        return np.nan
+
+
+def add_bike_ped_flags(df):
+    df["Pedestrian Involved"] = df["Vehicles Involved"].apply(ped_involved)
+    df["Cyclist Involved"] = df["Vehicles Involved"].apply(cyclist_involved)
+    return df
+
+
 def save_clean_df(cleaned_df, out_file):
-    ''' save the cleaned df '''
+    """ save the cleaned df """
     cleaned_df.to_csv(out_file, index=False)
 
 
 if __name__ == "__main__":
 
     rename_dict_13_18 = {
-        "DATE": "Collision Date", 
-        "TIME": "Collision Time", 
+        "DATE": "Collision Date",
+        "TIME": "Collision Time",
         "Trailers": "Trailers Involved",
         "INJ": "Number Injured",
         "DEAD": "Number Dead",
@@ -70,11 +100,9 @@ if __name__ == "__main__":
         "Surface": "Roadway Surface",
         "CN Zone": "Construction?",
         "Unique Id": "Unique Location Id",
-        'Intersect Rd.': "Intersecting Road"
-        }
-    rename_dict_03_15 = {
-        "Collision Type": "Vehicles Involved"
+        "Intersect Rd.": "Intersecting Road",
     }
+    rename_dict_03_15 = {"Collision Type": "Vehicles Involved"}
 
     # DF_13_18 = load_data("./source-data/moco-crash-2013-2018.csv")
     # DF_03_15 = load_data("./source-data/moco-crash-2003-2015.csv")
@@ -87,11 +115,14 @@ if __name__ == "__main__":
 
     # print(organize_location_cols(rename_df(DF_03_15,rename_dict_03_15)))
 
-    CLEAN_DF_13_18 = rename_df(DF_13_18,rename_dict_13_18)
-    CLEAN_DF_03_15 = organize_location_cols(rename_df(DF_03_15,rename_dict_03_15))
+    CLEAN_DF_13_18 = rename_df(DF_13_18, rename_dict_13_18)
+    CLEAN_DF_03_15 = add_bike_ped_flags(
+        organize_location_cols(rename_df(DF_03_15, rename_dict_03_15))
+    )
+    # CLEAN_DF_03_15 = add_bike_ped_flags(CLEAN_DF_03_15)
 
-    save_clean_df(CLEAN_DF_13_18,OUTFILE_13_18)
-    save_clean_df(CLEAN_DF_03_15,OUTFILE_03_15)
+    save_clean_df(CLEAN_DF_13_18, OUTFILE_13_18)
+    save_clean_df(CLEAN_DF_03_15, OUTFILE_03_15)
 
     """
     python main_data_cleaning.py "../../source-data/moco-crash-2013-2018.csv" "../../source-data/moco-crash-2003-2015.csv" "../../data-output/temp/moco-crash-2013-2018.csv" "../../data-output/temp/moco-crash-2003-2015.csv"
