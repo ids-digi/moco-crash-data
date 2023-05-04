@@ -37,7 +37,17 @@ python clean_addresses.py "../../data/cleaning-process/bike-crashes-2013-2023.cs
 python clean_addresses.py "../../data/cleaning-process/ped-crashes-2013-2023.csv" "../../data/cleaning-process/ped-crashes-2013-2023.csv"
 ```
 
-5. merge the bike/ped information into the master files for 2013-2018
+5. update geocoding with more accurate lat/lon data
+```curl
+python geocode.py "../../data/cleaning-process/moco-crash-2022.csv" "../../data/cleaning-process/moco-crash-2022.csv" /
+python geocode.py "../../data/cleaning-process/moco-crash-2021.csv" "../../data/cleaning-process/moco-crash-2021.csv" /
+python geocode.py "../../data/cleaning-process/moco-crash-2020.csv" "../../data/cleaning-process/moco-crash-2020.csv" /
+python geocode.py "../../data/cleaning-process/moco-crash-2019.csv" "../../data/cleaning-process/moco-crash-2019.csv" /
+python geocode.py "../../data/cleaning-process/moco-crash-2013-2018.csv" "../../data/cleaning-process/moco-crash-2013-2018.csv" /
+python geocode.py "../../data/cleaning-process/moco-crash-2003-2015.csv" "../../data/cleaning-process/moco-crash-2003-2015.csv" 
+```
+
+6. merge the bike/ped information into the master files for 2013-2018
 ```curl
 python merge_bike_ped.py "../../data/cleaning-process/moco-crash-2022.csv" "../../data/cleaning-process/bike-crashes-2013-2023.csv" "../../data/cleaning-process/ped-crashes-2013-2023.csv" "../../data/clean-data/moco-crash-2022-clean.csv" /
 
@@ -48,7 +58,8 @@ python merge_bike_ped.py "../../data/cleaning-process/moco-crash-2020.csv" "../.
 python merge_bike_ped.py "../../data/cleaning-process/moco-crash-2019.csv" "../../data/cleaning-process/bike-crashes-2013-2023.csv" "../../data/cleaning-process/ped-crashes-2013-2023.csv" "../../data/clean-data/moco-crash-2019-clean.csv" /
 ```
 
-6. combine into master file for mapping 
+7. combine into master file for mapping 
+This step takes a really long time to run. It might take longer than an hour if you clean every file. If you are working on analysis that doesn't require accurate lat/lon data, you can skip this step. 
 
 *to compare data across years, this step requires estimating the death/injury counts from 2003-2015, which reported these values differently than future reports. this means that death/injury estimates for 2003-2012 are likely low estimates, because the original data records injuries/crashes as a true/false value, rather than indicating how many occurred. for mapping purposes, the below scripts encode all `true` values as 1 death or injury, and all `false` values as 0 deaths or injuries.*
 ```curl
@@ -76,6 +87,12 @@ python clean_addresses.py "../../data/cleaning-process/moco-crash-2013-2018.csv"
 python clean_addresses.py "../../data/cleaning-process/moco-crash-2003-2015.csv" "../../data/clean-data/moco-crash-2003-2015-clean.csv" /
 python clean_addresses.py "../../data/cleaning-process/bike-crashes-2013-2023.csv" "../../data/cleaning-process/bike-crashes-2013-2023.csv" /
 python clean_addresses.py "../../data/cleaning-process/ped-crashes-2013-2023.csv" "../../data/cleaning-process/ped-crashes-2013-2023.csv" /
+python geocode.py "../../data/cleaning-process/moco-crash-2022.csv" "../../data/cleaning-process/moco-crash-2022.csv" /
+python geocode.py "../../data/cleaning-process/moco-crash-2021.csv" "../../data/cleaning-process/moco-crash-2021.csv" /
+python geocode.py "../../data/cleaning-process/moco-crash-2020.csv" "../../data/cleaning-process/moco-crash-2020.csv" /
+python geocode.py "../../data/cleaning-process/moco-crash-2019.csv" "../../data/cleaning-process/moco-crash-2019.csv" /
+python geocode.py "../../data/cleaning-process/moco-crash-2013-2018.csv" "../../data/cleaning-process/moco-crash-2013-2018.csv" /
+python geocode.py "../../data/cleaning-process/moco-crash-2003-2015.csv" "../../data/cleaning-process/moco-crash-2003-2015.csv" /
 python merge_bike_ped.py "../../data/cleaning-process/moco-crash-2022.csv" "../../data/cleaning-process/bike-crashes-2013-2023.csv" "../../data/cleaning-process/ped-crashes-2013-2023.csv" "../../data/clean-data/moco-crash-2022-clean.csv" /
 python merge_bike_ped.py "../../data/cleaning-process/moco-crash-2021.csv" "../../data/cleaning-process/bike-crashes-2013-2023.csv" "../../data/cleaning-process/ped-crashes-2013-2023.csv" "../../data/clean-data/moco-crash-2021-clean.csv" /
 python merge_bike_ped.py "../../data/cleaning-process/moco-crash-2020.csv" "../../data/cleaning-process/bike-crashes-2013-2023.csv" "../../data/cleaning-process/ped-crashes-2013-2023.csv" "../../data/clean-data/moco-crash-2020-clean.csv" /
