@@ -40,6 +40,7 @@ strs_to_replace = [
     ["ST\.", "ST"],
     ["PIKE", "PK"],
     ["ROAD", "RD"],
+    ["RD RD", "RD"],
     ["STATE RD", "ST RD"],
     ["SR4", "SR 4"],
     ["THIRD", "3RD"],
@@ -101,6 +102,7 @@ strs_to_replace = [
     ["US37", "ST RD 37"],
     ["ST RD 37 S HWY", "S ST RD 37"],
     ["ST RD 37 N RD", "N ST RD 37"],
+    ["DRR", "DRIVER"],
 ]
 
 
@@ -136,8 +138,6 @@ def clean_numbered_streets(road):
     if road:
         if bool(re.search("[\d]{1,2}(TH|ST|ND|RD)$", road.strip())):
             road = road.strip() + " ST"
-    #         if bool(re.search('^[\d]{1,2}(TH|ST|ND|RD)$',road)):
-    #             road =
     return road.strip()
 
 
@@ -156,6 +156,7 @@ def clean_addresses(df):
     df["Address Number"] = df["Roadway Id"].apply(extract_house_nums)
     df["Roadway Id"] = df["Roadway Id"].apply(remove_house_nums)
     df["Roadway Id"] = df["Roadway Id"].apply(remove_colons)
+    df["Primary Factor"] = df["Primary Factor"]
     return df
 
 
@@ -166,8 +167,6 @@ def save_clean_df(cleaned_df, out_file):
 
 if __name__ == "__main__":
 
-    # DF = load_data("./data-output/temp/moco-crash-2022.csv")
-    # OUTFILE = "./data-output/clean_addresses/moco-crash-2022.csv"
     DF = load_data(sys.argv[1])
     OUTFILE = sys.argv[2]
 

@@ -78,6 +78,20 @@ def drop_cols(df):
         "Light Condition",
         "Weather Conditions",
         "Surface Condition",
+        "Local Code",
+        "County",
+        "Township",
+        "Roadway Suffix",
+        "Roadway Name",
+        "Roadway Number",
+        "Intersecting Road Number",
+        "Mile Marker",
+        "Corporate Limits",
+        "Traffic Control Devices?",
+        "Aggressive Driving?",
+        "Damage Estimate",
+        "State Property Damage?",
+        "Corporate Limits?",
     ]
     return df.drop(cols_to_drop, axis=1, errors="ignore")
 
@@ -147,16 +161,8 @@ if __name__ == "__main__":
 
     CLEAN_DFS = list(map(drop_cols, CLEAN_DFS))
 
-    # print(CLEAN_DFS)
-
     master = combine_dfs(CLEAN_DFS)
 
     save_clean_df(master, OUTFILE)
 
     print("master file saved successfully")
-
-    """
-    run this command in the terminal: 
-    
-    python make_master_file.py "../../data-output/temp/moco-crash-2022.csv" "../../data-output/temp/moco-crash-2021.csv" "../../data-output/temp/moco-crash-2020.csv" "../../data-output/temp/moco-crash-2019.csv" "../../data-output/temp/moco-crash-2013-2018.csv" "../../data-output/temp/moco-crash-2003-2015.csv" "../../data-output/master-crashes.csv"
-    """
