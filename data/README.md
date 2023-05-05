@@ -25,6 +25,14 @@ This file contains data from years 2013-2018. Its fields are pretty similar to t
 
 This file is quite different from the other years of data. The main drawback is it includes way fewer fields (as explained in the [data dictionary](../README.md#fields-for-source-data-from-2003-2015)), but it has the advantage of including more details about pedestrian and cyclist involvement, as well as bus involvement. There is also more specificity about how severe injuries were. Fatality and injury counts from these years should be taken as an estimate. 
 
+5. [`geocoded` data](geocoded)
+
+This folder contains a geocoded masterfile that has gone through the cleaning process from the `geocoded.py` script.
+
+6. [`jittered` data](jittered)
+
+This folder contains data points that have been shifted slightly in the `jitter.py` script to slightly move data points to allow easier viewing of crahses on a map.
+
 ## Data dictionary
 This is a data dictionary which provides more information on what each field of the public data means. The dictionary is based on interviews with Bloomington city employees. 
 
